@@ -10,6 +10,7 @@
 - 再见
 - 拜拜
 - 一会儿见
+- 不聊了
 
 ## intent:affirm
 - 是
@@ -59,3 +60,18 @@
 - 你是人类吗
 - 我正在跟机器人聊天吗
 - 我正在跟人类聊天吗
+- 你是机器人还是人类
+
+## lookup:song_title
+  data/lookup/song_titles.txt
+
+## intent:play_song
+- 我想听[赵雷](artist)的[画](song_title)
+- 我想听[青花瓷](song_title)
+- 来一首[稻香](song_title)
+- 帮我点一首[周杰伦](artist)的[七里香](song_title)
+- 我要听[十年](song_title)，[陈奕迅](artist)唱的
+- 播放[千里之外](song_title)
+- 播放[倾城](song_title)
+- 播放[成都](song_title)
+- 放一首[南方姑娘](song_title)

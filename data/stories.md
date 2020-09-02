@@ -1,3 +1,27 @@
+## play song happy path
+* play_song{"song_title":"something", "artist":"someone"}
+  - utter_confirm_song
+  - action_search_song
+  
+## play song with title
+* play_song{"song_title":"something"}
+  - utter_ask_artist
+* inform{"artist":"someone"}
+  - utter_confirm_song
+  - action_search_song
+
+## play song with artist
+* play_song{"artist":"someone"}
+  - utter_ask_song_title
+* inform{"song_title":"something"}
+  - utter_confirm_song
+  - action_search_song
+  
+## play song 
+* play_song
+  - utter_ask_random_title
+
+
 ## happy path
 * greet
   - utter_greet

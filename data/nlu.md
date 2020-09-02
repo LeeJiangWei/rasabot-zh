@@ -5,6 +5,8 @@
 - 你好吗
 - 很高兴见到你
 - 初次见面
+- hello
+- hi
 
 ## intent:goodbye
 - 再见
@@ -21,16 +23,28 @@
 - 没错
 - 正确
 - 就是这样
+- 可以
+- 行
+- 行的
+- 没问题
+- 也行
+- 也可以
+- 都可以
+- 都行
+- 好
+- 好的
 
 ## intent:deny
 - 不
 - 不要
 - 不对
 - 不行
+- 不好
 - 我不觉得
 - 我不喜欢
 - 不太对
 - 不太行
+- 不可以
 
 ## intent:mood_great
 - 完美
@@ -61,6 +75,7 @@
 - 我正在跟机器人聊天吗
 - 我正在跟人类聊天吗
 - 你是机器人还是人类
+- 你是谁
 
 ## lookup:song_title
   data/lookup/song_titles.txt
@@ -75,3 +90,22 @@
 - 播放[倾城](song_title)
 - 播放[成都](song_title)
 - 放一首[南方姑娘](song_title)
+
+## intent:inform
+- [周杰伦](artist)
+- [赵雷](artist)
+- [陈奕迅](artist)
+- [许嵩](artist)
+- [林俊杰](artist)
+- [宋冬野](artist)
+- [张学友](artist)
+- [李志](artist)
+- [千里之外](song_title)
+- [七里香](song_title)
+- [成都](song_title)
+- [南方姑娘](song_title)
+- [画](song_title)
+- [稻香](song_title)
+- [十年](song_title)
+- [约定](song_title)
+- [彩虹](song_title)

@@ -1,59 +1,45 @@
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - play_song
-  - inform
-
-entities:
-  - artist
-  - song_title
-
-actions:
-  - action_search_song
-
-slots:
-  song_title:
-    type: text
-  artist:
-    type: text
-
-responses:
-  utter_greet:
-    - text: "你好！今天过得怎么样？"
-    - text: "你好，很高兴见到你！"
-
-  utter_cheer_up:
-    - text: "我来给你讲个笑话吧。"
-
-  utter_did_that_help:
-    - text: "这帮助到你了吗？"
-
-  utter_happy:
-    - text: "太好了！"
-
-  utter_goodbye:
-    - text: "再见。"
-
-  utter_iamabot:
-    - text: "我是使用Rasa开发的聊天机器人。"
-
-  utter_confirm_song:
-    - text: "好的，正在为您查找{artist}的{song_title}"
-
-  utter_ask_song_title:
-    - text: "要听{artist}的哪一首歌呢？"
-
-  utter_ask_random_title:
-    - text: "随机一首可以吗？"
-
-  utter_ask_artist:
-    - text: "要听谁唱的{song_title}呢？"
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- play_song
+- inform
+entities:
+- artist
+- song_title
+slots:
+  artist:
+    type: text
+  song_title:
+    type: text
+responses:
+  utter_greet:
+  - text: 你好！今天过得怎么样？
+  - text: 你好，很高兴见到你！
+  utter_cheer_up:
+  - text: 我来给你讲个笑话吧。
+  utter_did_that_help:
+  - text: 这帮助到你了吗？
+  utter_happy:
+  - text: 太好了！
+  utter_goodbye:
+  - text: 再见。
+  utter_iamabot:
+  - text: 我是使用Rasa开发的聊天机器人。
+  utter_confirm_song:
+  - text: 好的，正在为您查找{artist}的{song_title}
+  utter_ask_song_title:
+  - text: 要听{artist}的哪一首歌呢？
+  utter_ask_random_title:
+  - text: 随机一首可以吗？
+  utter_ask_artist:
+  - text: 要听谁唱的{song_title}呢？
+actions:
+- action_search_song

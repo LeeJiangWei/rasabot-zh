@@ -35,11 +35,11 @@ responses:
   - text: 我是使用Rasa开发的聊天机器人。
   utter_confirm_song:
   - text: 好的，正在为您查找{artist}的{song_title}
-  utter_ask_song_title:
+  utter_ask_song_title_with_artist:
   - text: 要听{artist}的哪一首歌呢？
+  utter_ask_artist_with_song_title:
+  - text: 要听谁唱的{song_title}呢？
   utter_ask_random_title:
   - text: 随机一首可以吗？
-  utter_ask_artist:
-  - text: 要听谁唱的{song_title}呢？
 actions:
 - action_search_song

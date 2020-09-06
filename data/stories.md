@@ -5,22 +5,23 @@
   
 ## play song with title
 * play_song{"song_title":"something"}
-  - utter_ask_artist
+  - utter_ask_artist_with_song_title
 * inform{"artist":"someone"}
   - utter_confirm_song
   - action_search_song
 
 ## play song with artist
 * play_song{"artist":"someone"}
-  - utter_ask_song_title
+  - utter_ask_song_title_with_artist
 * inform{"song_title":"something"}
   - utter_confirm_song
   - action_search_song
   
-## play song 
+## play song randomly
 * play_song
   - utter_ask_random_title
-
+* affirm
+  - action_search_song
 
 ## happy path
 * greet

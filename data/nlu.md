@@ -79,6 +79,9 @@
 
 ## lookup:song_title
   data/lookup/song_titles.txt
+  
+## lookup:artist
+  data/lookup/artists.txt
 
 ## intent:play_song
 - 我想听[赵雷](artist)的[画](song_title)

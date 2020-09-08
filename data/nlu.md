@@ -76,15 +76,17 @@
 - 我正在跟人类聊天吗
 - 你是机器人还是人类
 - 你是谁
-
-## lookup:song_title
-  data/lookup/song_titles.txt
-  
-## lookup:artist
-  data/lookup/artists.txt
+- 你是人类还是机器人
 
 ## intent:play_song
 - 我想听[赵雷](artist)的[画](song_title)
+- 我想听[李荣浩](artist)的[年少有为](song_title)
+- 我想听[邓紫棋](artist)唱的[光年之外](song_title)
+- 我想听[沙龙](song_title)
+- 我想听[陈奕迅](artist)唱的[单车](song_title)
+- 我要听[赵雷](artist)唱的[少年锦时](song_title)
+- 我要听[宋冬野](artist)唱的[董小姐](song_title)
+- 我要听[宋冬野](artist)唱的[安和桥](song_title)
 - 我想听[青花瓷](song_title)
 - 来一首[稻香](song_title)
 - 帮我点一首[周杰伦](artist)的[七里香](song_title)
@@ -93,6 +95,8 @@
 - 播放[倾城](song_title)
 - 播放[成都](song_title)
 - 放一首[南方姑娘](song_title)
+- 我想听[周杰伦](artist)[周杰伦](artist)的[青花瓷](song_title)[青花瓷](song_title)
+- 我想听歌
 
 ## intent:inform
 - [周杰伦](artist)
@@ -112,3 +116,9 @@
 - [十年](song_title)
 - [约定](song_title)
 - [彩虹](song_title)
+
+## lookup:song_titles.txt
+  data/lookup/song_titles.txt
+
+## lookup:artists.txt
+  data/lookup/artists.txt

@@ -2,26 +2,54 @@
 * play_song{"song_title":"something", "artist":"someone"}
   - utter_confirm_song
   - action_search_song
+  - reset_slots
   
 ## play song with title
 * play_song{"song_title":"something"}
-  - utter_ask_artist_with_song_title
-* inform{"artist":"someone"}
-  - utter_confirm_song
+  - utter_confirm_song_title
   - action_search_song
+   - reset_slots
 
 ## play song with artist
 * play_song{"artist":"someone"}
-  - utter_ask_song_title_with_artist
-* inform{"song_title":"something"}
-  - utter_confirm_song
+  - utter_confirm_song_artist
   - action_search_song
-  
-## play song randomly
+  - reset_slots
+
+## play song randomly happy
 * play_song
   - utter_ask_random_title
 * affirm
   - action_search_song
+  - reset_slots
+  
+## play song randomly sad 1
+* play_song
+  - utter_ask_song
+* inform{"song_title":"something"}
+  - utter_confirm_song_title
+  - action_search_song
+  - reset_slots
+  
+## play song randomly sad 2
+* play_song
+  - utter_ask_song
+* inform{"artist":"someone"}
+  - utter_confirm_song_artist
+  - action_search_song
+  - reset_slots
+
+## direct inform song title
+* inform{"song_title":"something"}
+  - utter_confirm_song_title
+  - action_search_song
+  - reset_slots
+
+## direct inform artist
+* inform{"artist":"someone"}
+  - utter_confirm_song_artist
+  - action_search_song
+  - reset_slots
 
 ## out of scope
 * out_of_scope
@@ -31,6 +59,7 @@
 * ask_weather
   - utter_confirm_weather
   - action_search_weather
+  - reset_slots
 
 ## happy path
 * greet

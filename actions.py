@@ -11,7 +11,7 @@ from requests.exceptions import RequestException
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import AllSlotsReset
+from rasa_sdk.events import AllSlotsReset, Restarted
 
 BASE_URL = "http://127.0.0.1:3000"
 
@@ -68,5 +68,22 @@ class SearchSongAction(Action):
             dispatcher.utter_message(msg)
 
         print(song_title, artist)
+
+        return [AllSlotsReset()]
+
+
+class SearchWeatherAction(Action):
+    def name(self) -> Text:
+        return "action_search_weather"
+
+    def run(
+            self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message("action_search_weather executed")
+
+        location = tracker.get_slot("location")
+        time = tracker.get_slot("time")
+
+        print("Location: ", location, "Time: ", time)
 
         return [AllSlotsReset()]

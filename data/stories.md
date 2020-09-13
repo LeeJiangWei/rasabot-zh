@@ -23,6 +23,15 @@
 * affirm
   - action_search_song
 
+## out of scope
+* out_of_scope
+  - utter_out_of_scope
+  
+## ask weather
+* ask_weather
+  - utter_confirm_weather
+  - action_search_weather
+
 ## happy path
 * greet
   - utter_greet

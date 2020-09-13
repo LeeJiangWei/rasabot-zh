@@ -78,6 +78,21 @@
 - 你是谁
 - 你是人类还是机器人
 
+## intent:ask_weather
+- [今天](time)的天气怎么样
+- [明天](time)的天气如何
+- [未来一周](time)的天气怎么样
+- [广州](location)的天气怎么样
+- [北京](location)的天气如何
+- [上海](location)的天气怎么样
+- [番禺区](location)[今天](time)的天气怎么样
+- [天河区](location)[明天](time)的天气如何
+- [越秀区](location)[未来一周](time)的天气怎么样
+- [未来](time)[十天](song_title)天气如何
+- [未来两周](time)天气如何
+- [未来三天](time)天气如何
+- [今天](time)天气如何
+
 ## intent:play_song
 - 我想听[赵雷](artist)的[画](song_title)
 - 我想听[李荣浩](artist)的[年少有为](song_title)
@@ -116,6 +131,18 @@
 - [十年](song_title)
 - [约定](song_title)
 - [彩虹](song_title)
+
+## intent:out_of_scope
+- 我想吃
+- 吃饭
+- 附近的餐厅
+- 购物
+- 附近有什么游乐场所
+- 肚子疼
+- 不舒服
+- 我需要医院
+- 我要去看医生
+- 帮我订外卖
 
 ## lookup:song_titles.txt
   data/lookup/song_titles.txt

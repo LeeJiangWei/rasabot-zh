@@ -11,13 +11,21 @@ intents:
 - bot_challenge
 - play_song
 - inform
+- out_of_scope
+- ask_weather
 entities:
 - artist
 - song_title
+- location
+- time
 slots:
   artist:
     type: text
+  location:
+    type: text
   song_title:
+    type: text
+  time:
     type: text
 responses:
   utter_greet:
@@ -41,5 +49,11 @@ responses:
   - text: 要听谁唱的{song_title}呢？
   utter_ask_random_title:
   - text: 随机一首可以吗？
+  utter_out_of_scope:
+  - text: 对不起，我还没学会这项技能
+  - text: 对不起，我听不懂你的意思
+  utter_confirm_weather:
+  - text: 正在为您查询...
 actions:
 - action_search_song
+- action_search_weather

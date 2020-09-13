@@ -88,7 +88,6 @@
 - [番禺区](location)[今天](time)的天气怎么样
 - [天河区](location)[明天](time)的天气如何
 - [越秀区](location)[未来一周](time)的天气怎么样
-- [未来](time)[十天](song_title)天气如何
 - [未来两周](time)天气如何
 - [未来三天](time)天气如何
 - [今天](time)天气如何

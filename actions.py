@@ -55,8 +55,6 @@ class SearchSongAction(Action):
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message("action_search_song executed")
-
         song_title = tracker.get_slot("song_title")
         artist = tracker.get_slot("artist")
 
@@ -79,8 +77,6 @@ class SearchWeatherAction(Action):
     def run(
             self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message("action_search_weather executed")
-
         location = tracker.get_slot("location")
         time = tracker.get_slot("time")
 

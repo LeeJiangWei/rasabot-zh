@@ -61,7 +61,7 @@ class SearchSongAction(Action):
         is_success, msg = self.search_song(song_title, artist)
 
         if is_success:
-            dispatcher.utter_message("已为您找到播放链接：" + msg)
+            dispatcher.utter_message(attachment=msg)
         else:
             dispatcher.utter_message(msg)
 

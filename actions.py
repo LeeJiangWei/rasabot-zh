@@ -60,7 +60,7 @@ class SearchSongAction(Action):
     def __search_song(self, song_title, artist) -> [bool, str]:
         if not self.__isLogin():
             if not self.__login():
-                return [False, "网易云账号登录失败"]
+                return [False, "网易云账号登录失败。"]
 
         keywords = ""
         if song_title:
@@ -73,7 +73,7 @@ class SearchSongAction(Action):
                                     params={"keywords": keywords}).json()
 
             if 'result' not in response.keys():
-                return [False, "抱歉，没有找到对应的音乐"]
+                return [False, "抱歉，没有找到对应的音乐。"]
 
             song_id = response['result']['songs'][0]['id']
 
@@ -81,14 +81,14 @@ class SearchSongAction(Action):
                              params={"id": song_id}).json()
             print(c, song_id)
             if not c['success']:
-                return [False, "抱歉，该音乐暂无版权"]
+                return [False, "抱歉，该音乐暂无版权。"]
 
             m = requests.get(BASE_URL + "/song/url", cookies=self.cookies,
                              params={"id": song_id}).json()
             song_url = m['data'][0]['url']
             print(m)
             if not song_url:
-                return [False, "抱歉，没有找到该音乐的播放链接"]
+                return [False, "抱歉，没有找到该音乐的播放链接。"]
 
             return [True, song_url]
 

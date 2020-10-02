@@ -42,11 +42,11 @@ responses:
   utter_iamabot:
   - text: 我是使用Rasa开发的聊天机器人。
   utter_confirm_song:
-  - text: 好的，正在为您查找{artist}的{song_title}
+  - text: 好的，正在为您查找{artist}的《{song_title}》。
   utter_confirm_song_title:
-  - text: 好的，正在为您查找{song_title}
+  - text: 好的，正在为您查找{song_title}。
   utter_confirm_song_artist:
-  - text: 好的，正在为您查找{artist}的歌
+  - text: 好的，正在为您查找{artist}的歌。
   utter_ask_song:
   - text: 那要听什么歌呢？
   utter_ask_random_title:
@@ -54,7 +54,7 @@ responses:
   utter_out_of_scope:
   - text: 对不起，我还没学会这项技能。
   utter_confirm_weather:
-  - text: 正在为您查询...
+  - text: 正在为您查询。
   utter_fallback:
   - text: 对不起，我没有听懂你的意思，重新组织句子试试吧。
 actions:

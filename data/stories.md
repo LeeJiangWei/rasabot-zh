@@ -16,29 +16,6 @@
   - action_search_song
   - reset_slots
 
-## play song randomly happy
-* play_song
-  - utter_ask_random_title
-* affirm
-  - action_search_song
-  - reset_slots
-  
-## play song randomly sad 1
-* play_song
-  - utter_ask_song
-* inform{"song_title":"something"}
-  - utter_confirm_song_title
-  - action_search_song
-  - reset_slots
-  
-## play song randomly sad 2
-* play_song
-  - utter_ask_song
-* inform{"artist":"someone"}
-  - utter_confirm_song_artist
-  - action_search_song
-  - reset_slots
-
 ## direct inform song title
 * inform{"song_title":"something"}
   - utter_confirm_song_title

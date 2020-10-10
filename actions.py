@@ -151,10 +151,23 @@ class SearchWeatherAction(Action):
 
             # location_id = None
             if geo_response['code'] == "200":
-                location_id = geo_response['location'][0]['id']
-                location = geo_response['location'][0]['name']
+                loc = geo_response['location'][0]
+                location_id = loc['id']
+                location_adm1 = loc['adm1']
+                location_adm2 = loc['adm2']
+                location_name = loc['name']
+
+                # 直辖区
+                if location_adm1 == location_adm2:
+                    location = f"{location_adm2}市"
+                else:
+                    location = f"{location_adm1}省{location_adm2}市"
+                # 查询城市精确到区级
+                if location_name != location_adm2:
+                    location += f"{location_name}"
+
             else:
-                dispatcher.utter_message("没有找到指定的城市。")
+                dispatcher.utter_message(f"对不起，没有找到指定的城市：{location}。")
                 return [AllSlotsReset()]
 
             # weather_url = "https://devapi.heweather.net/v7/weather/now"
@@ -206,6 +219,9 @@ class SearchWeatherAction(Action):
                         textNight = day['textNight']
                         windDirNight = day['windDirNight']
                         windScaleNight = day['windScaleNight']
+
+                        fxDate_list = fxDate.split("-")
+                        fxDate = f"{fxDate_list[0]}年{fxDate_list[1]}月{fxDate_list[2]}日"
 
                         message = f"{location}{fxDate}的天气：最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
                                   f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级；" \

@@ -124,6 +124,111 @@ class SearchWeatherAction(Action):
         location = tracker.get_slot("location")
         time = tracker.get_slot("time")
 
-        print("Location: ", location, "Time: ", time)
+        if not location:
+            location = "广州"
 
-        return [AllSlotsReset()]
+        if not time:
+            time = 0
+        else:
+            try:
+                time = int(time)
+            except ValueError:
+                dispatcher.utter_message("对不起，我无法知道您指定的时间噢，现在为您查询现在的天气。")
+                time = 0
+
+        print(f"Querying: location:{location}, time:{time}")
+
+        with open("./profile.json") as f:
+            profile = json.load(f)
+            key = profile['weather_api_key']
+
+            geo_response = requests.get("https://geoapi.heweather.net/v2/city/lookup", params={
+                "location": location,
+                "key": key,
+                "range": "cn",
+                "number": 1
+            }).json()
+
+            # location_id = None
+            if geo_response['code'] == "200":
+                location_id = geo_response['location'][0]['id']
+                location = geo_response['location'][0]['name']
+            else:
+                dispatcher.utter_message("没有找到指定的城市。")
+                return [AllSlotsReset()]
+
+            # weather_url = "https://devapi.heweather.net/v7/weather/now"
+            if time == -1:
+                weather_url = "https://devapi.heweather.net/v7/weather/now"
+            elif time <= 3:
+                weather_url = "https://devapi.heweather.net/v7/weather/3d"
+            elif time <= 7:
+                weather_url = "https://devapi.heweather.net/v7/weather/7d"
+            else:
+                weather_url = "https://devapi.heweather.net/v7/weather/7d"
+
+            weather_response = requests.get(weather_url, params={
+                "location": location_id,
+                "key": key
+            }).json()
+
+            if weather_response['code'] != "200":
+                dispatcher.utter_message("对不起，天气查询失败。")
+                return [AllSlotsReset()]
+            else:
+                link = weather_response["fxLink"]
+                if "now" in weather_response.keys():
+                    now = weather_response['now']
+
+                    text = now['text']
+                    temp = now['temp']
+                    feelsLike = now['feelsLike']
+                    windDir = now['windDir']
+                    windScale = now['windScale']
+
+                    message = f"{location}现在的天气：天气{text}，气温{temp}摄氏度，" \
+                              f"体感温度{feelsLike}摄氏度，{windDir}，风力等级{windScale}级。"
+
+                    dispatcher.utter_message(message, link=link)
+                    return [AllSlotsReset()]
+
+                elif "daily" in weather_response.keys():
+                    daily = weather_response['daily']
+                    if 0 <= time < len(daily) - 1:
+                        day = daily[time]
+
+                        fxDate = day['fxDate']
+                        tempMax = day['tempMax']
+                        tempMin = day['tempMin']
+                        textDay = day['textDay']
+                        windDirDay = day['windDirDay']
+                        windScaleDay = day['windScaleDay']
+                        textNight = day['textNight']
+                        windDirNight = day['windDirNight']
+                        windScaleNight = day['windScaleNight']
+
+                        message = f"{location}{fxDate}的天气：最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
+                                  f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级；" \
+                                  f"夜间天气{textNight}，{windDirNight}，风力等级{windScaleNight}级。"
+
+                        dispatcher.utter_message(message, link=link)
+                        return [AllSlotsReset()]
+                    else:
+                        for day in daily:
+                            fxDate = day['fxDate']
+                            tempMax = day['tempMax']
+                            tempMin = day['tempMin']
+                            textDay = day['textDay']
+                            windDirDay = day['windDirDay']
+                            windScaleDay = day['windScaleDay']
+                            textNight = day['textNight']
+                            windDirNight = day['windDirNight']
+                            windScaleNight = day['windScaleNight']
+
+                            message = f"{location}{fxDate}的天气：最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
+                                      f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级；" \
+                                      f"夜间天气{textNight}，{windDirNight}，风力等级{windScaleNight}级。"
+
+                            dispatcher.utter_message(message)
+                        dispatcher.utter_message(link=link)
+                        return [AllSlotsReset()]

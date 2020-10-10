@@ -81,16 +81,30 @@
 ## intent:ask_weather
 - [今天](time)的天气怎么样
 - [明天](time)的天气如何
-- [未来一周](time)的天气怎么样
+- 未来[一周](time)的天气怎么样
 - [广州](location)的天气怎么样
 - [北京](location)的天气如何
 - [上海](location)的天气怎么样
 - [番禺区](location)[今天](time)的天气怎么样
 - [天河区](location)[明天](time)的天气如何
-- [越秀区](location)[未来一周](time)的天气怎么样
-- [未来两周](time)天气如何
-- [未来三天](time)天气如何
+- [越秀区](location)未来[一周](time)的天气怎么样
+- 未来[两周](time)天气如何
+- 未来[三天](time)天气如何
 - [今天](time)天气如何
+- [现在](time)是什么天气
+- [明天](time)会下雨吗
+- [明天](time)天气好吗
+- 未来[一星期](time)天气怎么样
+- [后天](time)天气怎么样
+- [深圳](location)[现在](time)是什么天气
+- [三天](time)内的天气怎么样
+- [一周](time)内是什么天气
+- 告诉我[一星期](time)内[白云区](location)的天气情况
+- 我想知道[七天](time)内[成都](location)的天气
+- 你知道[长沙](location)[现在](time)的天气吗
+- 告诉我[武汉](location)[现在](time)的天气
+- [现在](time)的天气怎么样
+- 告诉我[现在](time)的天气情况
 
 ## intent:play_song
 - 我想听[赵雷](artist)的[画](song_title)
@@ -328,6 +342,24 @@
 - [十年](song_title)
 - [约定](song_title)
 - [彩虹](song_title)
+- [今天](time)
+- [明天](time)
+- [三天](time)之内
+- [广州](location)
+- [番禺区](location)
+- [深圳](location)
+- [武汉](location)
+- [白云区](location)
+- [越秀区](location)
+- [增城区](location)
+- [上海](location)
+- [北京](location)
+- [长沙](location)
+- [厦门](location)
+- [南京](location)
+- [郑州](location)
+- [杭州](location)
+
 
 ## intent:out_of_scope
 - 我想吃
@@ -346,3 +378,54 @@
 
 ## lookup:artists.txt
   data/lookup/artists.txt
+  
+## synonym:-1
+- 现在
+- 当前
+
+## synonym:0
+- 今天
+- 今日
+
+## synonym:1
+- 明天
+- 明日
+- 一天
+
+## synonym:2
+- 后天
+- 两天
+- 过两天
+- 过两日
+- 2天
+
+## synonym:3
+- 三天
+- 三天后
+- 三天内
+- 三天之内
+- 三日
+- 三日后
+- 3天
+- 3日
+
+## synonym:7
+- 一周
+- 一周内
+- 一星期内
+- 一星期
+- 七天
+- 七天内
+- 7天
+
+## synonym:14
+- 两周
+- 两星期
+- 十四天
+- 14天
+- 一个月
+- 三十天
+- 30天
+- 两个星期
+- 十天后
+- 十天

@@ -56,10 +56,16 @@
   - utter_out_of_scope
   
 ## ask weather
-* ask_weather
-  - utter_confirm_weather
+* ask_weather{"location":"somewhere"}
   - action_search_weather
   - reset_slots
+  
+## ask weather without location
+* ask_weather
+  - utter_ask_location
+* inform{"location":"somewhere"}
+  - action_search_weather
+  - reset_slots   
 
 ## happy path
 * greet

@@ -57,7 +57,7 @@ class SearchSongAction(Action):
                 print(e)
                 return False
 
-    def __search_song(self, song_title, artist) -> [bool, str]:
+    def __search_song(self, song_title, artist) -> [bool, any]:
         if not self.__isLogin():
             if not self.__login():
                 return [False, "网易云账号登录失败。"]
@@ -75,11 +75,16 @@ class SearchSongAction(Action):
             if 'result' not in response.keys():
                 return [False, "抱歉，没有找到对应的音乐。"]
 
-            song_id = response['result']['songs'][0]['id']
+            song = response['result']['songs'][0]
+
+            song_name = song['name']
+            song_id = song['id']
+            artist_name = song['ar'][0]['name']
+            album_url = song['al']['picUrl']
 
             c = requests.get(BASE_URL + "/check/music", cookies=self.cookies,
                              params={"id": song_id}).json()
-            print(c, song_id)
+
             if not c['success']:
                 return [False, "抱歉，该音乐暂无版权。"]
 
@@ -90,7 +95,7 @@ class SearchSongAction(Action):
             if not song_url:
                 return [False, "抱歉，没有找到该音乐的播放链接。"]
 
-            return [True, song_url]
+            return [True, {"name": song_name, "url": song_url, "artist": artist_name, "cover": album_url}]
 
         except RequestException as e:
             print(e)
@@ -106,6 +111,7 @@ class SearchSongAction(Action):
 
         if is_success:
             dispatcher.utter_message(attachment=msg)
+            print("song_msg: ", msg)
         else:
             dispatcher.utter_message(msg)
 
@@ -161,7 +167,7 @@ class SearchWeatherAction(Action):
                 if location_adm1 == location_adm2:
                     location = f"{location_adm2}市"
                 else:
-                    location = f"{location_adm1}省{location_adm2}市"
+                    location = f"{location_adm1}{location_adm2}市"
                 # 查询城市精确到区级
                 if location_name != location_adm2:
                     location += f"{location_name}"

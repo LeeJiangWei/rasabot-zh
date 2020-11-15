@@ -1,0 +1,88 @@
+version: "2.0"
+stories:
+- story: play song happy path
+  steps:
+  - intent: play_song
+    entities:
+    - song_title: something
+    - artist: someone
+  - action: utter_confirm_song
+  - action: action_search_song
+- story: play song with title
+  steps:
+  - intent: play_song
+    entities:
+    - song_title: something
+  - action: utter_confirm_song_title
+  - action: action_search_song
+- story: play song with artist
+  steps:
+  - intent: play_song
+    entities:
+    - artist: someone
+  - action: utter_confirm_song_artist
+  - action: action_search_song
+- story: direct inform song title
+  steps:
+  - intent: inform
+    entities:
+    - song_title: something
+  - action: utter_confirm_song_title
+  - action: action_search_song
+- story: direct inform artist
+  steps:
+  - intent: inform
+    entities:
+    - artist: someone
+  - action: utter_confirm_song_artist
+  - action: action_search_song
+- story: out of scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+- story: ask weather
+  steps:
+  - intent: ask_weather
+    entities:
+    - location: somewhere
+  - action: action_search_weather
+- story: ask weather without location
+  steps:
+  - intent: ask_weather
+  - action: utter_ask_location
+  - intent: inform
+    entities:
+    - location: somewhere
+  - action: action_search_weather
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

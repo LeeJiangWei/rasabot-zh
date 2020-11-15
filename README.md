@@ -1,9 +1,8 @@
-# rasabot-zh
-Simple dialogue & song search
+# Rasabot-Zh
+Simple dialogue, song search, weather query
 
 ## Rasa version
-`Rasa 1.10.11` <br>
-P.S. 刚写完没过两个月，就更新了RASA 2.0，真的佛了。
+`Rasa 2.0.0` <br>
 
 ## Profile.json
 A profile.json is required. (Not in git)

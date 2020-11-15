@@ -1,10 +1,10 @@
 language: zh
 pipeline:
-- name: SpacyNLP
-  model: zh_core_web_md
-- name: SpacyTokenizer
-- name: SpacyFeaturizer
-- name: RegexFeaturizer
+- name: HFTransformersNLP
+  model_name: bert
+  model_weights: bert-base-chinese
+- name: LanguageModelTokenizer
+- name: LanguageModelFeaturizer
 - name: DIETClassifier
   epochs: 200
 - name: EntitySynonymMapper

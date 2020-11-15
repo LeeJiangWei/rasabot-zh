@@ -36,7 +36,7 @@ class SearchSongAction(Action):
             return False
 
     def __login(self) -> bool:
-        with open("./profile.json") as f:
+        with open("../profile.json") as f:
             profile = json.load(f)
             phone = profile['phone']
             if 'md5_password' in profile.keys():
@@ -144,7 +144,7 @@ class SearchWeatherAction(Action):
 
         print(f"Querying: location:{location}, time:{time}")
 
-        with open("./profile.json") as f:
+        with open("../profile.json") as f:
             profile = json.load(f)
             key = profile['weather_api_key']
 

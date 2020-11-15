@@ -1,23 +1,25 @@
+version: "2.0"
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-- greet
-- goodbye
-- affirm
-- deny
-- mood_great
-- mood_unhappy
-- bot_challenge
-- play_song
-- inform
-- out_of_scope
-- ask_weather
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - play_song
+  - inform
+  - out_of_scope
+  - ask_weather
 entities:
-- artist
-- song_title
-- location
-- time
+  - artist
+  - song_title
+  - location
+  - time
 slots:
   artist:
     type: text
@@ -29,34 +31,34 @@ slots:
     type: text
 responses:
   utter_greet:
-  - text: 你好！今天过得怎么样？
-  - text: 你好，很高兴见到你！
+    - text: 你好！今天过得怎么样？
+    - text: 你好，很高兴见到你！
   utter_cheer_up:
-  - text: 我来给你讲个笑话吧：下水道很郁闷的说：我想不通！于是它堵了。
+    - text: 我来给你讲个笑话吧：下水道很郁闷的说：我想不通！于是它堵了。
   utter_did_that_help:
-  - text: 这帮助到你了吗？
+    - text: 这帮助到你了吗？
   utter_happy:
-  - text: 那就太好了！
+    - text: 那就太好了！
   utter_goodbye:
-  - text: 再见。
+    - text: 再见。
   utter_iamabot:
-  - text: 我是Rasa聊天机器人。
+    - text: 我是Rasa聊天机器人。
   utter_confirm_song:
-  - text: 好的，正在为您查找{artist}的《{song_title}》。
+    - text: 好的，正在为您查找{artist}的《{song_title}》。
   utter_confirm_song_title:
-  - text: 好的，正在为您查找《{song_title}》。
+    - text: 好的，正在为您查找《{song_title}》。
   utter_confirm_song_artist:
-  - text: 好的，正在为您查找{artist}的歌。
+    - text: 好的，正在为您查找{artist}的歌。
   utter_ask_song:
-  - text: 那要听什么歌呢？
+    - text: 那要听什么歌呢？
   utter_ask_random_title:
-  - text: 随机一首可以吗？
+    - text: 随机一首可以吗？
   utter_out_of_scope:
-  - text: 对不起，我还没学会这项技能。
+    - text: 对不起，我还没学会这项技能。
   utter_fallback:
-  - text: 对不起，我没有听懂你的意思，重新组织句子试试吧。
+    - text: 对不起，我没有听懂你的意思，重新组织句子试试吧。
   utter_ask_location:
-  - text: 您现在在哪里？
+    - text: 您现在在哪里？
 actions:
-- action_search_song
-- action_search_weather
+  - action_search_song
+  - action_search_weather

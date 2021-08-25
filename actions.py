@@ -18,6 +18,27 @@ from rasa_sdk.events import AllSlotsReset
 BASE_URL = "http://127.0.0.1:3000"
 
 
+class ResponseCommandAction(Action):
+    def name(self) -> Text:
+        return "action_response_command"
+
+    def run(
+            self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        obj = tracker.get_slot("object")
+        color = tracker.get_slot("color")
+        on = tracker.get_slot("on")
+        near = tracker.get_slot("near")
+        intent = tracker.latest_message["intent"]["name"]
+
+        reply = {"intent": intent, "object": obj, "color": color, "on": on, "near": near}
+
+        print(reply)
+        dispatcher.utter_message(json_message=reply)
+
+        return [AllSlotsReset()]
+
+
 class SearchSongAction(Action):
     cookies = ""
 
@@ -173,7 +194,7 @@ class SearchWeatherAction(Action):
                     location += f"{location_name}"
 
             else:
-                dispatcher.utter_message(f"对不起，没有找到指定的城市：{location}。")
+                dispatcher.utter_message(f"对不起，没有找到指定的城市，{location}。")
                 return [AllSlotsReset()]
 
             # weather_url = "https://devapi.heweather.net/v7/weather/now"
@@ -205,7 +226,7 @@ class SearchWeatherAction(Action):
                     windDir = now['windDir']
                     windScale = now['windScale']
 
-                    message = f"{location}现在的天气：天气{text}，气温{temp}摄氏度，" \
+                    message = f"{location}现在的天气，天气{text}，气温{temp}摄氏度，" \
                               f"体感温度{feelsLike}摄氏度，{windDir}，风力等级{windScale}级。"
 
                     dispatcher.utter_message(message, link=link)
@@ -229,8 +250,8 @@ class SearchWeatherAction(Action):
                         fxDate_list = fxDate.split("-")
                         fxDate = f"{fxDate_list[0]}年{fxDate_list[1]}月{fxDate_list[2]}日"
 
-                        message = f"{location}{fxDate}的天气：最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
-                                  f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级；" \
+                        message = f"{location}{fxDate}的天气，最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
+                                  f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级。" \
                                   f"夜间天气{textNight}，{windDirNight}，风力等级{windScaleNight}级。"
 
                         dispatcher.utter_message(message, link=link)
@@ -247,8 +268,8 @@ class SearchWeatherAction(Action):
                             windDirNight = day['windDirNight']
                             windScaleNight = day['windScaleNight']
 
-                            message = f"{location}{fxDate}的天气：最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
-                                      f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级；" \
+                            message = f"{location}{fxDate}的天气，最高温{tempMax}摄氏度，最低温{tempMin}摄氏度。" \
+                                      f"日间天气{textDay}，{windDirDay}，风力等级{windScaleDay}级。" \
                                       f"夜间天气{textNight}，{windDirNight}，风力等级{windScaleNight}级。"
 
                             dispatcher.utter_message(message)

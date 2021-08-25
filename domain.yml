@@ -13,11 +13,18 @@ intents:
 - inform
 - out_of_scope
 - ask_weather
+- ask_object_color
+- ask_object_position
+- ask_object_quantity
 entities:
 - artist
 - song_title
 - location
 - time
+- object
+- color
+- on
+- near
 slots:
   artist:
     type: text
@@ -26,6 +33,12 @@ slots:
   song_title:
     type: text
   time:
+    type: text
+  object:
+    type: text
+  position:
+    type: text
+  color:
     type: text
 responses:
   utter_greet:
@@ -47,6 +60,8 @@ responses:
   - text: 好的，正在为您查找《{song_title}》。
   utter_confirm_song_artist:
   - text: 好的，正在为您查找{artist}的歌。
+  utter_reject_song:
+  - text: 抱歉，点歌系统正在维护中。
   utter_ask_song:
   - text: 那要听什么歌呢？
   utter_ask_random_title:
@@ -60,3 +75,4 @@ responses:
 actions:
 - action_search_song
 - action_search_weather
+- action_response_command

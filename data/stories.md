@@ -1,33 +1,30 @@
 ## play song happy path
 * play_song{"song_title":"something", "artist":"someone"}
-  - utter_confirm_song
-  - action_search_song
-  - reset_slots
+  - utter_reject_song
   
 ## play song with title
 * play_song{"song_title":"something"}
-  - utter_confirm_song_title
-  - action_search_song
-   - reset_slots
+  - utter_reject_song
 
 ## play song with artist
 * play_song{"artist":"someone"}
-  - utter_confirm_song_artist
-  - action_search_song
+  - utter_reject_song
+  
+## ask object position
+* ask_object_position
+  - action_response_command
   - reset_slots
-
-## direct inform song title
-* inform{"song_title":"something"}
-  - utter_confirm_song_title
-  - action_search_song
+  
+## ask object color
+* ask_object_color
+  - action_response_command
   - reset_slots
-
-## direct inform artist
-* inform{"artist":"someone"}
-  - utter_confirm_song_artist
-  - action_search_song
+  
+## ask object quantity
+* ask_object_quantity
+  - action_response_command
   - reset_slots
-
+  
 ## out of scope
 * out_of_scope
   - utter_out_of_scope

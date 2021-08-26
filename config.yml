@@ -20,4 +20,4 @@ policies:
   nlu_threshold: 0.5
   ambiguity_threshold: 0.2
   core_threshold: 0.3
-  fallback_action_name: utter_fallback
+  fallback_action_name: action_turing_dialogue

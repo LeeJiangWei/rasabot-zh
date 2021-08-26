@@ -2,43 +2,24 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: false
 intents:
-- greet
-- goodbye
-- affirm
-- deny
-- mood_great
-- mood_unhappy
-- bot_challenge
-- play_song
-- inform
 - out_of_scope
-- ask_weather
 - ask_object_color
 - ask_object_position
 - ask_object_quantity
 entities:
-- artist
-- song_title
-- location
 - time
 - object
 - color
 - on
 - near
 slots:
-  artist:
-    type: text
-  location:
-    type: text
-  song_title:
-    type: text
-  time:
-    type: text
   object:
     type: text
-  position:
-    type: text
   color:
+    type: text
+  on:
+    type: text
+  near:
     type: text
 responses:
   utter_greet:
@@ -76,3 +57,4 @@ actions:
 - action_search_song
 - action_search_weather
 - action_response_command
+- action_turing_dialogue

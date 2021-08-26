@@ -39,6 +39,54 @@ class ResponseCommandAction(Action):
         return [AllSlotsReset()]
 
 
+class TuringDialogue(Action):
+    def name(self) -> Text:
+        return "action_turing_dialogue"
+
+    def run(
+            self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+
+        input_text = tracker.latest_message["text"]
+        print(input_text)
+
+        with open("./profile.json") as f:
+            profile = json.load(f)
+            key = profile["turing_api_key"]
+
+        body = {
+            "reqType": 0,
+            "perception": {
+                "inputText": {
+                    "text": input_text
+                },
+                "selfInfo": {
+                    "location": {
+                        "city": "广州",
+                        "province": "广东"
+                    }
+                }
+            },
+            "userInfo": {
+                "apiKey": key,
+                "userId": "nano"
+            }
+        }
+
+        try:
+            results = requests.post("http://openapi.turingapi.com/openapi/api/v2", json=body).json()["results"]
+
+            for result in results:
+                if result["resultType"] == "text":
+                    dispatcher.utter_message(result["values"]["text"])
+
+        except RequestException as e:
+            print(e)
+            dispatcher.utter_message("网络发生错误，请检查服务器状态。")
+
+        return [AllSlotsReset()]
+
+
 class SearchSongAction(Action):
     cookies = ""
 

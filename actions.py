@@ -78,7 +78,10 @@ class TuringDialogue(Action):
 
             for result in results:
                 if result["resultType"] == "text":
-                    dispatcher.utter_message(result["values"]["text"])
+                    text = result["values"]["text"]
+                    if text[-1] not in "，。？！“”：；":
+                        text += "。"
+                    dispatcher.utter_message(text)
 
         except RequestException as e:
             print(e)

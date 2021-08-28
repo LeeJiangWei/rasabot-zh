@@ -126,3 +126,39 @@
 - 有几个[白色](color)的[水杯](object)
 - 告诉我[水杯](object)的数量
 - 你知道有多少个[茶壶](object)吗
+- [人](object)的数量是多少
+- 有多少个[投影仪](object)
+- 有几个[厨柜](object)
+- [排插](object)有几个
+- [水龙头](object)有多少个
+- 告诉我[瓶子](object)的数量
+- 请问有多少个[水壶](object)
+- 我想知道[厨柜](object)的数量
+- [红色](color)[黑板擦](object)的数量是多少
+- 有多少个[蓝色](color)的[排插](object)
+- 有几个[白色](color)的[垃圾桶](object)
+- [黑色](color)的[投影仪](object)有几个
+- [红色](color)的[磨豆机](object)有多少个
+- 告诉我[黄色](color)[微波炉](object)的数量
+- 请问有多少个[黄色](color)的[排插](object)
+- 我想知道[蓝色](color)[排插](object)的数量
+
+## synonym:杯子
+- 茶杯
+- 水杯
+- 咖啡杯
+- 被子
+- 辈子
+
+## synonym:水壶
+- 茶壶
+- 烧水壶
+- 水浒
+- 水户
+
+## synonym:桌子
+- 餐桌
+- 镯子
+
+## synonym:厨柜
+- 柜子

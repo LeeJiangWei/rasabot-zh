@@ -27,13 +27,11 @@ class ResponseCommandAction(Action):
     ) -> List[Dict[Text, Any]]:
         obj = tracker.get_slot("object")
         color = tracker.get_slot("color")
-        on = tracker.get_slot("on")
-        near = tracker.get_slot("near")
         intent = tracker.latest_message["intent"]["name"]
 
-        reply = {"intent": intent, "object": obj, "color": color, "on": on, "near": near}
+        reply = {"intent": intent, "object": obj, "color": color}
 
-        print(reply)
+        print("Entity extract result: ", reply)
         dispatcher.utter_message(json_message=reply)
 
         return [AllSlotsReset()]
@@ -48,7 +46,7 @@ class TuringDialogue(Action):
     ) -> List[Dict[Text, Any]]:
 
         input_text = tracker.latest_message["text"]
-        print(input_text)
+        print("Input to turing bot: ", input_text)
 
         with open("./profile.json") as f:
             profile = json.load(f)
@@ -81,7 +79,8 @@ class TuringDialogue(Action):
                     text = result["values"]["text"]
                     if text[-1] not in "，。？！“”：；":
                         text += "。"
-                    dispatcher.utter_message(text)
+                    print(text)
+                    dispatcher.utter_message("Output from turing bot: ", text)
 
         except RequestException as e:
             print(e)

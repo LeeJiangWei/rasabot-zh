@@ -44,6 +44,56 @@
 - 我想听歌
 - 陪我聊聊天
 
+## intent:list_whats_on
+- [投影仪](object)上都有什么东西
+- [微波炉](object)上都有什么东西
+- [白板](object)上面有什么
+- [白板](object)上面有什么
+- 告诉我[手提包](object)上面有什么
+- 告诉我[咖啡机](object)上面有什么
+- 请问[咖啡豆](object)上面有什么物品
+- 请问[盆栽](object)上面有什么物品
+- 你知道[杯子](object)上面有什么东西吗
+- 你知道[黑板擦](object)上面有什么东西吗
+- [水壶](object)上有什么
+- [人](object)上有什么
+- [盆栽](object)上面有哪些物品
+- [水龙头](object)上面有哪些物品
+- [水壶](object)上有什么
+- [人](object)上有什么
+- [盆栽](object)上面有哪些物品
+- [水龙头](object)上面有哪些物品
+
+## intent:list_whats_near
+- [白板](object)旁边有什么
+- [杯子](object)旁边有什么
+- [微波炉](object)旁有什么
+- [咖啡机](object)旁有什么
+- [手提包](object)旁边有什么东西
+- [椅子](object)旁边有什么东西
+- 告诉我在[手提包](object)都有什么物品
+- 告诉我在[咖啡机](object)都有什么物品
+- 请问[盆栽](object)旁边有哪些东西
+- 请问[厨柜](object)旁边有哪些东西
+- 你知道[瓶子](object)旁边哪些物品吗
+- 你知道[人](object)旁边哪些物品吗
+
+
+## intent:ask_object_material
+- [咖啡机](object)是什么材质的
+- [遥控器](object)是什么材质的
+- [黑板擦](object)的材质是什么
+- [黑板擦](object)的材质是什么
+- [白板](object)是用什么材料做的
+- [咖啡豆](object)是用什么材料做的
+- 告诉我[厨柜](object)是用什么材料做的
+- 告诉我[桌子](object)是用什么材料做的
+- 请问[垃圾桶](object)是什么材质
+- 请问[咖啡豆](object)是什么材质
+- [杯子](object)是什么材料
+- [盆栽](object)是什么材料
+
+
 ## intent:ask_object_position
 - [水壶](object)在哪里
 - [水杯](object)在哪

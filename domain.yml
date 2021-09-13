@@ -6,12 +6,13 @@ intents:
 - ask_object_color
 - ask_object_position
 - ask_object_quantity
+- ask_object_material
+- list_whats_on
+- list_whats_near
 entities:
 - time
 - object
 - color
-- on
-- near
 slots:
   object:
     type: text

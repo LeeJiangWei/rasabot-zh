@@ -79,8 +79,8 @@ class TuringDialogue(Action):
                     text = result["values"]["text"]
                     if text[-1] not in "，。？！“”：；":
                         text += "。"
-                    print(text)
-                    dispatcher.utter_message("Output from turing bot: ", text)
+                    print("Output from turing bot: ", text)
+                    dispatcher.utter_message(text)
 
         except RequestException as e:
             print(e)

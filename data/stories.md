@@ -13,6 +13,22 @@
   - action_response_command
   - reset_slots
   
+## ask object material
+* ask_object_material
+  - action_response_command
+  - reset_slots
+  
+## list whats on
+* list_whats_on
+  - action_response_command
+  - reset_slots
+  
+## list whats near
+* list_whats_near
+  - action_response_command
+  - reset_slots
+
 ## out of scope
 * out_of_scope
   - action_turing_dialogue
+  - reset_slots

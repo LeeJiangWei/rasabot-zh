@@ -10,17 +10,12 @@ intents:
 - list_whats_on
 - list_whats_near
 entities:
-- time
 - object
 - color
 slots:
   object:
     type: text
   color:
-    type: text
-  on:
-    type: text
-  near:
     type: text
 responses:
   utter_greet:

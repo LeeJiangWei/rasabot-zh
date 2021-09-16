@@ -43,6 +43,7 @@
 - 我想听故事
 - 我想听歌
 - 陪我聊聊天
+- 杯子要多少钱
 
 ## intent:list_whats_on
 - [投影仪](object)上都有什么东西
@@ -78,6 +79,17 @@
 - 你知道[瓶子](object)旁边哪些物品吗
 - 你知道[人](object)旁边哪些物品吗
 
+## intent:ask_object_function
+- [黑板擦](object)有什么用
+- [厨柜](object)有什么用
+- [人](object)的功能是什么
+- [咖啡豆](object)的功能是什么
+- [手提包](object)可以用来做什么
+- [箱子](object)可以用来做什么
+- [水龙头](object)能有用来做什么
+- [排插](object)能有用来做什么
+- 请问[桌子](object)有什么用
+- 请问[磨豆机](object)有什么用
 
 ## intent:ask_object_material
 - [咖啡机](object)是什么材质的
@@ -96,6 +108,8 @@
 
 ## intent:ask_object_position
 - [水壶](object)在哪里
+- [白板](object)在哪里
+- [餐桌](object)在哪里
 - [水杯](object)在哪
 - [茶壶](object)在什么地方
 - [水壶](object)在什么位置
@@ -179,6 +193,8 @@
 - [人](object)的数量是多少
 - 有多少个[投影仪](object)
 - 有几个[厨柜](object)
+- 有几个[人](object)
+- 有几个[水瓶](object)
 - [排插](object)有几个
 - [水龙头](object)有多少个
 - 告诉我[瓶子](object)的数量

@@ -7,6 +7,7 @@ intents:
 - ask_object_position
 - ask_object_quantity
 - ask_object_material
+- ask_object_function
 - list_whats_on
 - list_whats_near
 entities:

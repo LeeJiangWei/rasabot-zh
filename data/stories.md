@@ -18,6 +18,11 @@
   - action_response_command
   - reset_slots
   
+## ask object function
+* ask_object_function
+  - action_response_command
+  - reset_slots  
+  
 ## list whats on
 * list_whats_on
   - action_response_command

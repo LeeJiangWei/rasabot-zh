@@ -39,7 +39,7 @@ class ResponseCommandAction(Action):
 
 class TuringDialogue(Action):
     def name(self) -> Text:
-        return "action_turing_dialogue"
+        return "deprecated"
 
     def run(
             self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
@@ -81,6 +81,79 @@ class TuringDialogue(Action):
                         text += "。"
                     print("Output from turing bot: ", text)
                     dispatcher.utter_message(text)
+
+        except RequestException as e:
+            print(e)
+            dispatcher.utter_message("网络发生错误，请检查服务器状态。")
+
+        return [AllSlotsReset()]
+
+
+class BaiduDialogue(Action):
+    def __init__(self):
+        super(BaiduDialogue, self).__init__()
+        with open("./profile.json") as f:
+            profile = json.load(f)
+            self.key = profile["baidu_api_key"]
+            self.secret = profile["baidu_api_secret"]
+            self.service_id = profile["baidu_service_id"]
+
+        self.access_token = self.get_access_token()
+        self.session_id = ""
+        print("Baidu dialogue successfully initialized. Access token: ", self.access_token)
+
+    def name(self) -> Text:
+        return "action_turing_dialogue"
+
+    def get_access_token(self) -> Text:
+        resp = requests.get("https://aip.baidubce.com/oauth/2.0/token", params={
+            "grant_type": "client_credentials",
+            "client_id": self.key,
+            "client_secret": self.secret
+        }).json()
+
+        return resp["access_token"]
+
+    def run(
+            self, dispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        input_text = tracker.latest_message["text"]
+        sender_id = tracker.sender_id
+        print("Input to turing bot: ", input_text)
+
+        body = {
+            "version": "3.0",
+            "service_id": self.service_id,
+            "log_id": "server",
+            "session_id": self.session_id,
+            "request": {
+                "terminal_id": sender_id,
+                "query": input_text
+            }
+        }
+
+        url = f"https://aip.baidubce.com/rpc/2.0/unit/service/v3/chat?access_token={self.access_token}"
+
+        try:
+            response = requests.post(url, json=body).json()
+
+            error_code = response["error_code"]
+            if error_code != 0:
+                # see: https://ai.baidu.com/ai-doc/UNIT/qkpzeloou#%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF
+                err_msg = response["error_msg"]
+
+                print(f"Baidu dialogue error {error_code}: ", err_msg)
+                dispatcher.utter_message("请求错误，请检查服务器状态。")
+            else:
+                result = response["result"]
+
+                self.session_id = result["session_id"]
+                text = result["responses"][0]["actions"][0]["say"]
+
+                if text[-1] not in "，。？！“”：；":
+                    text += "。"
+                print("Output from turing bot: ", text)
+                dispatcher.utter_message(text)
 
         except RequestException as e:
             print(e)

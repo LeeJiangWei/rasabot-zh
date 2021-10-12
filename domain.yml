@@ -10,6 +10,7 @@ intents:
 - ask_object_function
 - list_whats_on
 - list_whats_near
+- list_all
 entities:
 - object
 - color

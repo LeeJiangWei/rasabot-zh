@@ -4,7 +4,7 @@
 # See this guide on how to implement these action:
 # https://rasa.com/docs/rasa/core/actions/#custom-actions/
 
-
+import random
 from typing import Any, Text, Dict, List
 import requests
 from requests.exceptions import RequestException
@@ -16,6 +16,13 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
 
 BASE_URL = "http://127.0.0.1:3000"
+
+ERROR_RESPONSE = [
+    "你在说啥呀，我怎么听不懂捏。",
+    "这就触及到我的知识盲区啦。",
+    "刚才一不留神没听清楚你说了啥，能再说一次吗。",
+    "哈哈哈，这是啥意思。",
+]
 
 
 class ResponseCommandAction(Action):
@@ -143,7 +150,7 @@ class BaiduDialogue(Action):
                 err_msg = response["error_msg"]
 
                 print(f"Baidu dialogue error {error_code}: ", err_msg)
-                dispatcher.utter_message("请求错误，请检查服务器状态。")
+                dispatcher.utter_message(random.choice(ERROR_RESPONSE))
             else:
                 result = response["result"]
 
@@ -152,7 +159,7 @@ class BaiduDialogue(Action):
 
                 if text[-1] not in "，。？！“”：；":
                     text += "。"
-                print("Output from turing bot: ", text)
+                print("Output from baidu bot: ", text)
                 dispatcher.utter_message(text)
 
         except RequestException as e:

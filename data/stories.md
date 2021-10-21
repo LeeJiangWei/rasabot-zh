@@ -35,5 +35,5 @@
 
 ## out of scope
 * out_of_scope
-  - action_turing_dialogue
+  - action_response_command
   - reset_slots

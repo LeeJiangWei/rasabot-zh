@@ -20,4 +20,4 @@ policies:
   nlu_threshold: 0.3  # intent confidence threshold
   ambiguity_threshold: 0.1
   core_threshold: 0.3  # response action threshold
-  fallback_action_name: action_turing_dialogue
+  fallback_action_name: action_response_command

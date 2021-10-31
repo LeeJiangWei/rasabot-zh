@@ -238,6 +238,10 @@
 - 有几个[厨柜](object)
 - 有几个[人](object)
 - 有几个[水瓶](object)
+- [黑板擦](object)有几个
+- 有几个[黑板擦](object)
+- 有几个[箱子](object)
+- [箱子](object)有几个
 - [排插](object)有几个
 - [水龙头](object)有多少个
 - 告诉我[瓶子](object)的数量
